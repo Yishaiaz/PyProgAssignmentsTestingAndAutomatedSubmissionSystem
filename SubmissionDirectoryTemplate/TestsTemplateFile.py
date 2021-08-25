@@ -1,6 +1,6 @@
 import os.path
 import pandas as pd
-from studentSubmissionTemplate import *
+from solution import *
 from AssignmentSolutionTemplate import *
 
 summation_txt = ''
@@ -76,12 +76,12 @@ if __name__ == '__main__':
     if len(student_id) != 9:
         summation_for_student = "ID is not Valid!"
     else:
-        if not os.path.isfile('../results.csv'):
-            pd.DataFrame.from_dict(df).set_index('ID').to_csv('../results.csv')
+        if not os.path.isfile('results.csv'):
+            pd.DataFrame.from_dict(df).set_index('ID').to_csv('results.csv')
         else:
-            all_results_df = pd.read_csv('../results.csv', index_col='ID')
-            all_results_df.append(pd.DataFrame.from_dict(df).set_index('ID')).drop_duplicates().to_csv('../results.csv')
+            all_results_df = pd.read_csv('results.csv', index_col='ID')
+            all_results_df.append(pd.DataFrame.from_dict(df).set_index('ID')).drop_duplicates().to_csv('results.csv')
 
-    with open(f'student_summation.txt', 'w') as f:
+    with open(f'submission/student_summation.txt', 'w') as f:
         f.write(summation_for_student)
 
